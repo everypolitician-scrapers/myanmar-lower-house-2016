@@ -14,4 +14,4 @@ gem 'require_all'
 gem 'rubocop'
 gem 'scraped_page_archive', github: 'everypolitician/scraped_page_archive'
 gem 'scraperwiki', github: 'openaustralia/scraperwiki-ruby', branch: 'morph_defaults'
-  
+gem "combine_popolo_memberships", git: "https://github.com/everypolitician/combine_popolo_memberships.git"

@@ -1,4 +1,10 @@
 GIT
+  remote: https://github.com/everypolitician/combine_popolo_memberships.git
+  revision: 0a18a0defb11cf08f59f7f6cdc8de898227cbe89
+  specs:
+    combine_popolo_memberships (0.2.0)
+
+GIT
   remote: https://github.com/everypolitician/field_serializer.git
   revision: 5de2b5898b8f56c79f62276362047940312f591a
   specs:
@@ -74,6 +80,7 @@ PLATFORMS
 
 DEPENDENCIES
   colorize
+  combine_popolo_memberships!
   field_serializer!
   nokogiri
   open-uri-cached

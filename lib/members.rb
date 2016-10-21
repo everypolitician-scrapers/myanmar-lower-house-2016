@@ -1,6 +1,7 @@
 require 'open-uri'
 require 'open-uri/cached'
 require 'json'
+require_relative 'member_formatter'
 
 OpenURI::Cache.cache_path = '.cache'
 
@@ -10,7 +11,7 @@ class Members
   end
 
   def to_a
-    all_members
+    format(all_members)
   end
 
   def json_for(url)
@@ -18,6 +19,12 @@ class Members
   end
 
   private
+
+  def format(mems)
+    mems.map do |mem|
+      MemberFormatter.new(mem).to_h
+    end
+  end
 
   def all_members
     r = []

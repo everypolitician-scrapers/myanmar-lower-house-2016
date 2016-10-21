@@ -12,9 +12,10 @@ class Members
   def to_a
     r = []
     current_page = json_for(url)
+    r << current_page[:results]
     while current_page[:next]
-      r << current_page[:results]
       current_page = json_for(current_page[:next])
+      r << current_page[:results]
     end
     r.flatten
   end

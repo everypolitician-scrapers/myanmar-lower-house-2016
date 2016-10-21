@@ -10,7 +10,7 @@ class Members
   end
 
   def to_a
-    members
+    all_members
   end
 
   def json_for(url)
@@ -19,7 +19,7 @@ class Members
 
   private
 
-  def members
+  def all_members
     r = []
     current_page = json_for(url)
     r << current_page[:results]

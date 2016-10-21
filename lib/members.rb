@@ -10,6 +10,16 @@ class Members
   end
 
   def to_a
+    members
+  end
+
+  def json_for(url)
+    JSON.parse(open(url).read, symbolize_names: true)
+  end
+
+  private
+
+  def members
     r = []
     current_page = json_for(url)
     r << current_page[:results]
@@ -19,12 +29,6 @@ class Members
     end
     r.flatten
   end
-
-  def json_for(url)
-    JSON.parse(open(url).read, symbolize_names: true)
-  end
-
-  private
 
   attr_reader :url
 end

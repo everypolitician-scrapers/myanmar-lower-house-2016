@@ -1,5 +1,11 @@
 require 'field_serializer'
 
+class String
+  def tidy
+    gsub(/[[:space:]]+/, ' ').strip
+  end
+end
+
 class MemberFormatter
   include FieldSerializer
 
@@ -12,11 +18,11 @@ class MemberFormatter
   end
 
   field :name do
-    names[0]
+    names[0].tidy
   end
 
-  field :other_names do
-    names[1]
+  field :other_name do
+    names[1].tidy unless names[1].nil?
   end
 
   field :cell do

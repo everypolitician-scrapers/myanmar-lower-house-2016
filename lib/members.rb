@@ -22,7 +22,7 @@ class Members
 
   def format(mems)
     mems.map do |mem|
-      MemberFormatter.new(mem).to_h
+      Member.new(mem).to_h
     end
   end
 

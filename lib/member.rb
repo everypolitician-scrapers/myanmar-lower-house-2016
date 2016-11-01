@@ -22,7 +22,7 @@ class Member
   end
 
   field :alternate_names do
-    names[1].tidy unless names[1].nil?
+    names.drop(1).map(&:tidy).join(';') unless names[1].nil?
   end
 
   field :cell do

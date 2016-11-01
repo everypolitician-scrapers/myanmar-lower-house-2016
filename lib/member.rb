@@ -18,7 +18,7 @@ class Member
   end
 
   field :name do
-    names[0].tidy
+    names.first.tidy
   end
 
   field :other_names do

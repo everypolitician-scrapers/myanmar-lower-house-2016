@@ -21,7 +21,7 @@ class MemberFormatter
     names.first.tidy
   end
 
-  field :other_name do
+  field :alternate_names do
     names[1].tidy unless names[1].nil?
   end
 

@@ -11,7 +11,9 @@ class Members
   end
 
   def to_a
-    format(all_members)
+    mems.map do |mem|
+      Member.new(mem).to_h
+    end
   end
 
   def json_for(url)
@@ -19,12 +21,6 @@ class Members
   end
 
   private
-
-  def format(mems)
-    mems.map do |mem|
-      MemberFormatter.new(mem).to_h
-    end
-  end
 
   def all_members
     r = []

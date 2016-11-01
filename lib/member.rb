@@ -1,6 +1,12 @@
 require 'field_serializer'
 
-class MemberFormatter
+class String
+  def tidy
+    gsub(/[[:space:]]+/, ' ').strip
+  end
+end
+
+class Member
   include FieldSerializer
 
   def initialize(member)
@@ -12,7 +18,11 @@ class MemberFormatter
   end
 
   field :name do
-    person[:name]
+    names.first.tidy
+  end
+
+  field :alternate_names do
+    names.drop(1).map(&:tidy).join(';') unless names[1].nil?
   end
 
   field :cell do
@@ -53,10 +63,6 @@ class MemberFormatter
 
   field :sort_name do
     person[:sort_name]
-  end
-
-  field :other_names do
-    person[:other_names].join(';')
   end
 
   field :gender do
@@ -102,6 +108,10 @@ class MemberFormatter
   private
 
   attr_reader :member
+
+  def names
+    person[:name].split('(or)')
+  end
 
   def person
     member[:person]

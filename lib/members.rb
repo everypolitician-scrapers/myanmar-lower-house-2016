@@ -15,7 +15,7 @@ class Members
 
   field :members do
     lower_house_members.map do |mem|
-      Member.new(mem).to_h
+      Member.new(mem)
     end
   end
 

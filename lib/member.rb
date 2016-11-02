@@ -21,7 +21,7 @@ class Member
     names.first.tidy
   end
 
-  field :other_names do
+  field :alternate_names do
     names[1].tidy unless names[1].nil?
   end
 

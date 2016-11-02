@@ -13,7 +13,7 @@ class Members
     @url = url
   end
 
-  field :members do
+  field :members_of_the_lower_house do
     lower_house_members.map do |mem|
       Member.new(mem)
     end

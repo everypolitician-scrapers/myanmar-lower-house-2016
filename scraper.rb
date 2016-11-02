@@ -7,7 +7,7 @@ require 'combine_popolo_memberships'
 require_relative 'lib/members.rb'
 
 members_url = 'http://api.openhluttaw.org/en/memberships'
-members = Members.new(members_url).to_h[:members]
+members = Members.new(members_url).to_h[:members_of_the_lower_house]
 
 members.map do |member|
   ScraperWiki.save_sqlite([:id], member)

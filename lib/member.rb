@@ -1,6 +1,6 @@
 require 'field_serializer'
 
-class MemberFormatter
+class Member
   include FieldSerializer
 
   def initialize(member)

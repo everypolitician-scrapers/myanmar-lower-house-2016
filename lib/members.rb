@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'open-uri/cached'
 require 'json'
-require_relative 'member_formatter'
+require_relative 'member'
 
 OpenURI::Cache.cache_path = '.cache'
 
@@ -12,7 +12,7 @@ class Members
 
   def to_a
     lower_house_members.map do |mem|
-      MemberFormatter.new(mem).to_h
+      Member.new(mem).to_h
     end
   end
 

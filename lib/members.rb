@@ -11,7 +11,7 @@ class Members
   end
 
   def to_a
-    format(all_members)
+    format(lower_house_members)
   end
 
   def json_for(url)
@@ -23,6 +23,12 @@ class Members
   def format(mems)
     mems.map do |mem|
       MemberFormatter.new(mem).to_h
+    end
+  end
+
+  def lower_house_members
+    all_members.select do |mem|
+      mem[:organization][:classification] == 'Lower House'
     end
   end
 

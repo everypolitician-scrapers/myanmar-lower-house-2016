@@ -27,7 +27,7 @@ class Members
 
   def lower_house_members
     all_members.select do |mem|
-      mem[:organization][:classification] == 'Lower House'
+      mem[:organization][:id] == '7f162ebef80e4a4aba12361ea1151fce'
     end
   end
 

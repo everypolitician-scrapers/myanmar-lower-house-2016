@@ -20,6 +20,8 @@ members = members_my.map do |member|
   data[:name__my] = data[:name]
   data[:alternate_names__en] = member_en.to_h[:alternate_names]
   data[:alternate_names__my] = data[:alternate_names]
+  data[:party__en] = member_en.to_h[:party]
+  data[:party__my] = data[:party]
   data
 end
 

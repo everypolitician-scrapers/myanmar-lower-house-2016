@@ -110,7 +110,7 @@ class Member
   attr_reader :member
 
   def names
-    person[:name].split('(or)')
+    person[:name].split(Regexp.union('(or)', '(ခ)'))
   end
 
   def person

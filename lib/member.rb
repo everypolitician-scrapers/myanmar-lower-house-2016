@@ -81,10 +81,6 @@ class Member
     person[:national_identity]
   end
 
-  field :language_code do
-    person[:language_code]
-  end
-
   field :birth_date do
     person[:birth_date]
   end

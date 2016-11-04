@@ -53,10 +53,6 @@ class MemberMY < Member
     person[:sort_name]
   end
 
-  field :gender do
-    person[:gender]
-  end
-
   field :summary do
     person[:summary]
   end

@@ -6,7 +6,7 @@ class String
   end
 end
 
-class Member
+class MemberRecord
   include FieldSerializer
 
   def initialize(member)

@@ -1,6 +1,6 @@
 require_relative 'member_record'
 
-class MemberMY < MemberRecord
+class MemberRecordMY < MemberRecord
   field :id do
     member[:id]
   end

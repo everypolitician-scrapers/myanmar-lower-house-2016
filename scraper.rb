@@ -6,12 +6,12 @@ require 'combine_popolo_memberships'
 
 require_relative 'lib/member_my.rb'
 require_relative 'lib/member_en.rb'
-require_relative 'lib/members'
+require_relative 'lib/member_records'
 
 members_en_url = 'http://api.openhluttaw.org/en/memberships'
 members_my_url = 'http://api.openhluttaw.org/my/memberships'
-members_en = Members.new(members_en_url, MemberEN).to_h[:members_of_the_lower_house]
-members_my = Members.new(members_my_url, MemberMY).to_h[:members_of_the_lower_house]
+members_en = MemberRecords.new(members_en_url, MemberEN).to_h[:members_of_the_lower_house]
+members_my = MemberRecords.new(members_my_url, MemberMY).to_h[:members_of_the_lower_house]
 
 members = members_my.map do |member_my|
   data_en = members_en.find do |member_en|

@@ -9,13 +9,14 @@ OpenURI::Cache.cache_path = '.cache'
 class Members
   include FieldSerializer
 
-  def initialize(url)
+  def initialize(url, member_class)
     @url = url
+    @member_class = member_class
   end
 
   field :members_of_the_lower_house do
     lower_house_members.map do |mem|
-      Member.new(mem)
+      member_class.new(mem)
     end
   end
 
@@ -24,6 +25,8 @@ class Members
   end
 
   private
+
+  attr_reader :url, :member_class
 
   def lower_house_members
     all_members.select do |mem|
@@ -41,6 +44,4 @@ class Members
     end
     r.flatten
   end
-
-  attr_reader :url
 end

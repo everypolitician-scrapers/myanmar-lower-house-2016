@@ -5,12 +5,12 @@ require 'colorize'
 require 'combine_popolo_memberships'
 
 require_relative 'lib/member_record_my.rb'
-require_relative 'lib/member_en.rb'
+require_relative 'lib/member_record_en.rb'
 require_relative 'lib/member_records'
 
 members_en_url = 'http://api.openhluttaw.org/en/memberships'
 members_my_url = 'http://api.openhluttaw.org/my/memberships'
-members_en = MemberRecords.new(members_en_url, MemberEN).to_h[:members_of_the_lower_house]
+members_en = MemberRecords.new(members_en_url, MemberRecordEN).to_h[:members_of_the_lower_house]
 members_my = MemberRecords.new(members_my_url, MemberRecordMY).to_h[:members_of_the_lower_house]
 
 members = members_my.map do |member_my|

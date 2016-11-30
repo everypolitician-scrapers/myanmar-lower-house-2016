@@ -2,7 +2,7 @@ require 'open-uri'
 require 'open-uri/cached'
 require 'json'
 require 'field_serializer'
-require_relative 'member'
+require_relative 'member_records'
 
 OpenURI::Cache.cache_path = '.cache'
 
@@ -10,7 +10,7 @@ class MembersRecords < Scraped::JSON
 
   field :members_of_the_lower_house do
     lower_house_members.map do |mem|
-      Member.new(mem)
+      MemberRecords.new(mem)
     end
   end
 

@@ -6,6 +6,7 @@ git_source(:github) { |repo_name| "https://github.com/#{repo_name}.git" }
 ruby '2.3.1'
 
 gem 'colorize'
+gem 'combine_popolo_memberships', git: 'https://github.com/everypolitician/combine_popolo_memberships.git'
 gem 'field_serializer', github: 'everypolitician/field_serializer'
 gem 'nokogiri'
 gem 'open-uri-cached'
@@ -14,4 +15,3 @@ gem 'require_all'
 gem 'rubocop'
 gem 'scraped_page_archive', github: 'everypolitician/scraped_page_archive'
 gem 'scraperwiki', github: 'openaustralia/scraperwiki-ruby', branch: 'morph_defaults'
-gem "combine_popolo_memberships", git: "https://github.com/everypolitician/combine_popolo_memberships.git"

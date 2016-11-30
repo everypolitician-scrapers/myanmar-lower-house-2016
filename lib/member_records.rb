@@ -1,20 +1,9 @@
-require 'field_serializer'
+require 'scraped'
 
-class String
-  def tidy
-    gsub(/[[:space:]]+/, ' ').strip
-  end
-end
-
-class MemberRecords
-  include FieldSerializer
-
-  def initialize(member)
-    @member = member
-  end
+class MemberRecords < Scraped::JSON
 
   field :id do
-    member[:id]
+    json[:id]
   end
 
   field :name do
@@ -102,19 +91,17 @@ class MemberRecords
   end
 
   field :party do
-    member[:on_behalf_of][:name]
+    json[:on_behalf_of][:name]
   end
 
   private
-
-  attr_reader :member
 
   def names
     person[:name].split('(or)')
   end
 
   def person
-    member[:person]
+    json[:person]
   end
 
   def contact_type(type)

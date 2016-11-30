@@ -10,7 +10,7 @@ class MembersRecords < Scraped::JSON
 
   field :members_of_the_lower_house do
     lower_house_members.map do |mem|
-      MemberRecords.new(mem)
+      MemberRecords.new(response: response, json: mem)
     end
   end
 

@@ -12,10 +12,14 @@ members_url = 'http://api.openhluttaw.org/en/memberships'
 
 def all_members(url)
   r = []
-  current_page = MembersRecords.new(response: Scraped::Request.new(url: url).response)
+  current_page = MembersRecords.new(
+    response: Scraped::Request.new(url: url).response
+  )
   r << current_page.members_of_the_lower_house
   while current_page.next
-    current_page = MembersRecords.new(response: Scraped::Request.new(url: current_page.next).response)
+    current_page = MembersRecords.new(
+      response: Scraped::Request.new(url: current_page.next).response
+    )
     r << current_page.members_of_the_lower_house
   end
   r.flatten

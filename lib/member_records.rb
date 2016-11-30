@@ -7,7 +7,6 @@ class String
 end
 
 class MemberRecords < Scraped::JSON
-
   field :id do
     json[:id]
   end
@@ -114,8 +113,6 @@ class MemberRecords < Scraped::JSON
     cc = person[:contact_details].select do |c|
       c[:type] == type
     end
-    unless cc.first.nil?
-      cc.first[:value]
-    end
+    cc.first[:value] unless cc.first.nil?
   end
 end

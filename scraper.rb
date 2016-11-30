@@ -4,6 +4,7 @@ require 'scraperwiki'
 require 'colorize'
 require 'combine_popolo_memberships'
 require 'require_all'
+require 'scraped_page_archive'
 
 require_rel 'lib'
 

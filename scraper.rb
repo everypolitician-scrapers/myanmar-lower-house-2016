@@ -20,4 +20,6 @@ def all_members(url)
   r.flatten
 end
 
-members = all_members(members_url)
+all_members(members_url).each do |member|
+  ScraperWiki.save_sqlite([:id, :name], member.to_h)
+end

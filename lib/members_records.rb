@@ -6,17 +6,16 @@ require_relative 'member'
 
 OpenURI::Cache.cache_path = '.cache'
 
-class Members
-  include FieldSerializer
-
-  def initialize(url)
-    @url = url
-  end
+class MembersRecords < Scraped::JSON
 
   field :members_of_the_lower_house do
     lower_house_members.map do |mem|
       Member.new(mem)
     end
+  end
+
+  field :next do
+    json[:next]
   end
 
   def json_for(url)
@@ -26,21 +25,8 @@ class Members
   private
 
   def lower_house_members
-    all_members.select do |mem|
+    json[:results].select do |mem|
       mem[:organization][:classification] == 'Lower House'
     end
   end
-
-  def all_members
-    r = []
-    current_page = json_for(url)
-    r << current_page[:results]
-    while current_page[:next]
-      current_page = json_for(current_page[:next])
-      r << current_page[:results]
-    end
-    r.flatten
-  end
-
-  attr_reader :url
 end

@@ -1,5 +1,11 @@
 require 'scraped'
 
+class String
+  def tidy
+    gsub(/[[:space:]]+/, ' ').strip
+  end
+end
+
 class MemberRecords < Scraped::JSON
 
   field :id do

@@ -1,7 +1,7 @@
 require 'scraped'
 
-class Scraped
-  class JSON < Scraped
+module Scraped
+  class JSON < Scraped::Document
     require 'json'
 
     private

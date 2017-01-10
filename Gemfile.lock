@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/everypolitician/scraped.git
-  revision: aabdf259f6cc2f746b50352e078a9141450e8d6e
+  revision: c3fc06e1c44beb9027a4dbe4c8bb471d803b27ce
   specs:
-    scraped (0.1.0)
-      field_serializer
+    scraped (0.2.0)
+      field_serializer (>= 0.3.0)
       nokogiri
       require_all
 
@@ -39,7 +39,7 @@ GEM
     httpclient (2.8.2.4)
     method_source (0.8.2)
     mini_portile2 (2.1.0)
-    nokogiri (1.6.8.1)
+    nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
     open-uri-cached (0.0.5)
     parser (2.3.1.4)
@@ -51,7 +51,7 @@ GEM
       slop (~> 3.4)
     public_suffix (2.0.4)
     rainbow (2.1.0)
-    require_all (1.3.3)
+    require_all (1.4.0)
     rubocop (0.44.1)
       parser (>= 2.3.1.1, < 3.0)
       powerpack (~> 0.1)
@@ -88,7 +88,7 @@ DEPENDENCIES
   scraperwiki!
 
 RUBY VERSION
-   ruby 2.3.1p112
+   ruby 2.3.3p222
 
 BUNDLED WITH
    1.13.6

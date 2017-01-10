@@ -6,7 +6,7 @@ class String
   end
 end
 
-class MemberRecords < Scraped::JSON
+class MembershipRecord < Scraped::JSON
   field :id do
     json[:id]
   end

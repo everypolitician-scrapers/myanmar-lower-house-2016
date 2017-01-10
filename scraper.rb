@@ -18,4 +18,5 @@ def all_members(url)
   all_members(current_members.next) unless current_members.next.nil?
 end
 
+ScraperWiki.sqliteexecute('DELETE FROM data') rescue nil
 all_members(members_url)

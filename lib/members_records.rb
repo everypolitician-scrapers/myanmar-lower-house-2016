@@ -1,7 +1,6 @@
 require 'open-uri'
 require 'open-uri/cached'
 require 'json'
-require 'field_serializer'
 require_relative 'member_records'
 
 OpenURI::Cache.cache_path = '.cache'

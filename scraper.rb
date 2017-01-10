@@ -1,8 +1,6 @@
 #!/bin/env ruby
 # encoding: utf-8
 require 'scraperwiki'
-require 'colorize'
-require 'combine_popolo_memberships'
 require 'require_all'
 require 'scraped_page_archive'
 

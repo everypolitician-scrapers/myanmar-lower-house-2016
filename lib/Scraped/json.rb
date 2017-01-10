@@ -14,5 +14,10 @@ module Scraped
     def json
       @json ||= ::JSON.parse(Nokogiri::HTML(response.body), symbolize_names: true)
     end
+
+    def fragment(mapping)
+      noko_fragment, klass = mapping.to_a.first
+      klass.new(json: noko_fragment, response: response)
+    end
   end
 end

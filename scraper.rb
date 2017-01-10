@@ -9,7 +9,7 @@ require_rel 'lib'
 members_url = 'http://api.openhluttaw.org/en/memberships'
 
 def all_members(url)
-  current_members = MembersRecords.new(
+  current_members = MembershipRecords.new(
     response: Scraped::Request.new(url: url).response
   )
   current_members.members_of_the_lower_house.each do |mem|

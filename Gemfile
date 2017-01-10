@@ -5,9 +5,6 @@ git_source(:github) { |repo_name| "https://github.com/#{repo_name}.git" }
 
 ruby '2.3.1'
 
-gem 'colorize'
-gem 'combine_popolo_memberships', git: 'https://github.com/everypolitician/combine_popolo_memberships.git'
-gem 'field_serializer', github: 'everypolitician/field_serializer'
 gem 'nokogiri'
 gem 'open-uri-cached'
 gem 'pry'

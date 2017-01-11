@@ -16,10 +16,6 @@ class MembershipRecords < Scraped::JSON
     json[:next]
   end
 
-  def json_for(url)
-    JSON.parse(open(url).read, symbolize_names: true)
-  end
-
   private
 
   def lower_house_members

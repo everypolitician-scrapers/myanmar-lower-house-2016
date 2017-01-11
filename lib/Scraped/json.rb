@@ -12,7 +12,7 @@ module Scraped
     end
 
     def json
-      @json ||= ::JSON.parse(Nokogiri::HTML(response.body), symbolize_names: true)
+      @json ||= ::JSON.parse(response.body, symbolize_names: true)
     end
 
     def fragment(mapping)

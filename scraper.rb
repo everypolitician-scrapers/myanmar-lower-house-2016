@@ -8,15 +8,15 @@ require_rel 'lib'
 
 members_url = 'http://api.openhluttaw.org/en/memberships'
 
-def all_members(url)
+def scrape_all_members(url)
   current_members = MembershipRecords.new(
     response: Scraped::Request.new(url: url).response
   )
   current_members.members_of_the_lower_house.each do |mem|
     ScraperWiki.save_sqlite([:id, :name], mem.to_h)
   end
-  all_members(current_members.next) unless current_members.next.nil?
+  scrape_all_members(current_members.next) unless current_members.next.nil?
 end
 
 ScraperWiki.sqliteexecute('DELETE FROM data') rescue nil
-all_members(members_url)
+scrape_all_members(members_url)

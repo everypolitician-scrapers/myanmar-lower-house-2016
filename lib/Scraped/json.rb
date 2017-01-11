@@ -16,8 +16,8 @@ module Scraped
     end
 
     def fragment(mapping)
-      noko_fragment, klass = mapping.to_a.first
-      klass.new(json: noko_fragment, response: response)
+      json_fragment, klass = mapping.to_a.first
+      klass.new(json: json_fragment, response: response)
     end
   end
 end

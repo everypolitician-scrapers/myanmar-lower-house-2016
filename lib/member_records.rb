@@ -2,20 +2,21 @@ require 'open-uri'
 require 'open-uri/cached'
 require 'json'
 require 'field_serializer'
-require_relative 'member'
+require_relative 'member_record'
 
 OpenURI::Cache.cache_path = '.cache'
 
-class Members
+class MemberRecords
   include FieldSerializer
 
-  def initialize(url)
+  def initialize(url, member_class)
     @url = url
+    @member_class = member_class
   end
 
   field :members_of_the_lower_house do
     lower_house_members.map do |mem|
-      Member.new(mem)
+      member_class.new(mem)
     end
   end
 
@@ -25,9 +26,11 @@ class Members
 
   private
 
+  attr_reader :url, :member_class
+
   def lower_house_members
     all_members.select do |mem|
-      mem[:organization][:classification] == 'Lower House'
+      mem[:organization][:id] == '7f162ebef80e4a4aba12361ea1151fce'
     end
   end
 
@@ -41,6 +44,4 @@ class Members
     end
     r.flatten
   end
-
-  attr_reader :url
 end

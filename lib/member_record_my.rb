@@ -1,18 +1,6 @@
-require 'field_serializer'
+require_relative 'member_record'
 
-class String
-  def tidy
-    gsub(/[[:space:]]+/, ' ').strip
-  end
-end
-
-class Member
-  include FieldSerializer
-
-  def initialize(member)
-    @member = member
-  end
-
+class MemberRecordMY < MemberRecord
   field :id do
     member[:id]
   end
@@ -65,10 +53,6 @@ class Member
     person[:sort_name]
   end
 
-  field :gender do
-    person[:gender]
-  end
-
   field :summary do
     person[:summary]
   end
@@ -79,10 +63,6 @@ class Member
 
   field :national_identity do
     person[:national_identity]
-  end
-
-  field :language_code do
-    person[:language_code]
   end
 
   field :birth_date do
@@ -103,26 +83,5 @@ class Member
 
   field :party do
     member[:on_behalf_of][:name]
-  end
-
-  private
-
-  attr_reader :member
-
-  def names
-    person[:name].split('(or)')
-  end
-
-  def person
-    member[:person]
-  end
-
-  def contact_type(type)
-    cc = person[:contact_details].select do |c|
-      c[:type] == type
-    end
-    unless cc.first.nil?
-      cc.first[:value]
-    end
   end
 end

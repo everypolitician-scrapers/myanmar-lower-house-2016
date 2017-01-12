@@ -1,4 +1,5 @@
-require 'field_serializer'
+# frozen_string_literal: true
+require 'scraped'
 
 class String
   def tidy
@@ -6,15 +7,9 @@ class String
   end
 end
 
-class Member
-  include FieldSerializer
-
-  def initialize(member)
-    @member = member
-  end
-
+class MembershipRecord < Scraped::JSON
   field :id do
-    member[:id]
+    json[:id]
   end
 
   field :name do
@@ -102,27 +97,23 @@ class Member
   end
 
   field :party do
-    member[:on_behalf_of][:name]
+    json[:on_behalf_of][:name]
   end
 
   private
-
-  attr_reader :member
 
   def names
     person[:name].split('(or)')
   end
 
   def person
-    member[:person]
+    json[:person]
   end
 
   def contact_type(type)
     cc = person[:contact_details].select do |c|
       c[:type] == type
     end
-    unless cc.first.nil?
-      cc.first[:value]
-    end
+    cc.first[:value] unless cc.first.nil?
   end
 end

@@ -1,5 +1,6 @@
 #!/bin/env ruby
 # encoding: utf-8
+# frozen_string_literal: true
 require 'scraperwiki'
 require 'require_all'
 
@@ -12,7 +13,7 @@ def scrape_lower_house_members(url)
     response: Scraped::Request.new(url: url).response
   )
   records_page.members_of_the_lower_house.each do |mem|
-    ScraperWiki.save_sqlite([:id, :name], mem.to_h)
+    ScraperWiki.save_sqlite(%i(id name), mem.to_h)
   end
   scrape_lower_house_members(records_page.next) unless records_page.next.nil?
 end

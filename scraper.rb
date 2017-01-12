@@ -2,7 +2,6 @@
 # encoding: utf-8
 require 'scraperwiki'
 require 'require_all'
-require 'scraped_page_archive'
 
 require_rel 'lib'
 

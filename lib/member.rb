@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'field_serializer'
 
 class String
@@ -121,8 +122,6 @@ class Member
     cc = person[:contact_details].select do |c|
       c[:type] == type
     end
-    unless cc.first.nil?
-      cc.first[:value]
-    end
+    cc.first[:value] unless cc.first.nil?
   end
 end

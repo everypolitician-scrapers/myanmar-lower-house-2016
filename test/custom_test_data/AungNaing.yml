@@ -1,0 +1,27 @@
+:url: http://api.openhluttaw.org/en/memberships?page=9
+:to_h:
+  :id: 70511a1c7d014ab4add384536237c63b
+  :name: Aung Naing
+  :alternate_names: Naingan Kyaw
+  :cell: '09 7873 15672'
+  :text: '09 7873 15672'
+  :phone: '09 7315 6720'
+  :email: nainggankyaw7@gmail.com
+  # TODO: Remove additional name
+  # Issue: https://github.com/everypolitician-scrapers/myanmar-lower-house-2016/issues/20
+  :family_name: Aung Naing (or) Naingan Kyaw
+  :additional_name:
+  :honorific_prefix: U
+  :honofific_suffix:
+  :patronymic_name:
+  :sort_name:
+  :gender: male
+  :summary: ''
+  :biography: ''
+  :national_identity: Bamar
+  :language_code: en
+  :birth_date: '1964-06-06'
+  :death_date:
+  :links: ''
+  :image: https://storage.googleapis.com/staticassets/candidate-photos/Scan_A_20150826_0015.jpg
+  :party: National League for Democracy

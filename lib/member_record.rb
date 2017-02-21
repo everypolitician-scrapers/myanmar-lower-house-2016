@@ -1,21 +1,9 @@
 # frozen_string_literal: true
-require 'field_serializer'
+require_relative 'scraped/json'
 
-class String
-  def tidy
-    gsub(/[[:space:]]+/, ' ').strip
-  end
-end
-
-class Member
-  include FieldSerializer
-
-  def initialize(member)
-    @member = member
-  end
-
+class MemberRecord < Scraped::JSON
   field :id do
-    member[:id]
+    json[:id]
   end
 
   field :name do
@@ -27,19 +15,19 @@ class Member
   end
 
   field :cell do
-    contact_type('cell')
+    contact_detail_for('cell')
   end
 
   field :text do
-    contact_type('text')
+    contact_detail_for('text')
   end
 
   field :phone do
-    contact_type('voice')
+    contact_detail_for('voice')
   end
 
   field :email do
-    contact_type('email')
+    contact_detail_for('email')
   end
 
   field :family_name do
@@ -103,25 +91,21 @@ class Member
   end
 
   field :party do
-    member[:on_behalf_of][:name]
+    json[:on_behalf_of][:name]
   end
 
   private
-
-  attr_reader :member
 
   def names
     person[:name].split('(or)')
   end
 
   def person
-    member[:person]
+    json[:person]
   end
 
-  def contact_type(type)
-    cc = person[:contact_details].select do |c|
-      c[:type] == type
-    end
-    cc.first[:value] unless cc.first.nil?
+  def contact_detail_for(type)
+    contact = person[:contact_details].find { |c| c[:type] == type }
+    contact[:value] if contact
   end
 end

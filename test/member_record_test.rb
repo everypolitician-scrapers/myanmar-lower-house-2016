@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 require_relative './test_helper'
-require_relative '../lib/members'
+require_relative '../lib/member_records'
 
-describe Members do
+describe MemberRecords do
   around { |test| VCR.use_cassette(File.basename(url), &test) }
 
   let(:yaml_data) { YAML.load_file(subject) }
   let(:url) { yaml_data[:url] }
-  let(:response) { Members.new(url) }
+  let(:response) { MemberRecords.new(response: Scraped::Request.new(url: url).response) }
 
   describe 'member data' do
     let(:subject) { 'test/data/YanLin.yml' }

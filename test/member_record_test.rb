@@ -16,4 +16,13 @@ describe Members do
       response.members_of_the_lower_house.first.to_h.must_equal yaml_data[:to_h]
     end
   end
+
+  describe 'member with phone number and alternate names' do
+    let(:subject) { 'test/data/AungNaing.yml' }
+
+    it 'should match the test data' do
+      response.members_of_the_lower_house.find { |mem| mem.id == '70511a1c7d014ab4add384536237c63b' }
+              .to_h.must_equal yaml_data[:to_h]
+    end
+  end
 end

@@ -1,11 +1,7 @@
 # frozen_string_literal: true
-require 'open-uri'
-require 'open-uri/cached'
 require 'json'
 require 'field_serializer'
 require_relative 'member'
-
-OpenURI::Cache.cache_path = '.cache'
 
 class Members
   include FieldSerializer

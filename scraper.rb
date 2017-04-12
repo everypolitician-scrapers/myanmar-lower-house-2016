@@ -3,8 +3,11 @@
 # frozen_string_literal: true
 
 require 'scraperwiki'
-
 require_relative 'lib/members.rb'
+
+require 'open-uri/cached'
+OpenURI::Cache.cache_path = '.cache'
+# require 'scraped_page_archive/open-uri'
 
 members_url = 'http://api.openhluttaw.org/en/memberships'
 

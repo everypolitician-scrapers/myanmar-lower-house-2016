@@ -11,6 +11,6 @@ OpenURI::Cache.cache_path = '.cache'
 
 members_url = 'http://api.openhluttaw.org/en/memberships'
 
-ScraperWiki.sqliteexecute('DELETE FROM data') rescue nil
+ScraperWiki.sqliteexecute('DROP TABLE data') rescue nil
 data = Members.new(members_url).members_of_the_lower_house.map(&:to_h)
 ScraperWiki.save_sqlite([:id], data)

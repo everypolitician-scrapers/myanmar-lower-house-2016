@@ -25,7 +25,7 @@ class Members
 
   def lower_house_members
     all_members.select do |mem|
-      mem[:organization][:classification] == 'Lower House'
+      mem[:organization] && mem[:organization][:classification] == 'Lower House'
     end
   end
 
